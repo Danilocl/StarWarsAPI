@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -40,7 +41,7 @@ public class PlanetaResource {
 		return ResponseEntity.ok().body(listPlaneta);
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(path = "/busca/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Planeta> findById(@PathVariable String id) {
 		Planeta objPlaneta = service.findById(id);
 		return ResponseEntity.ok().body(objPlaneta);
