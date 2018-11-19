@@ -12,6 +12,12 @@ import com.mashape.unirest.http.Unirest;
 
 import br.com.starwars.models.Planeta;
 
+/**
+ * Classe de inicialização, a mesma irá inserir os dados iniciais no banco
+ * 
+ * @author Danilo
+ *
+ */
 @Component
 public class Init implements CommandLineRunner {
 
@@ -30,18 +36,25 @@ public class Init implements CommandLineRunner {
 
 		Planeta planeta;
 
-		LOGGER.info("Inserindo 10 planetas no MongoDB");
+		LOGGER.info("Inserindo 5 planetas iniciais no banco de dados");
 
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= 05; i++) {
 
+			// Aqui é onde eu consulto os planetas da api SWAPI, retorno eles no formato
+			// json e armazeno em uma vairável
 			String planetString = Unirest.get("https://swapi.co/api/planets/{id}").routeParam("id", String.valueOf(i))
 					.asJson().getBody().toString();
-
+			
+			//Aqui eu instancio a classe Planeta e passo os dados retornado como parâmetro
 			planeta = new Gson().fromJson(planetString, Planeta.class);
-
+			
+			
+			// Aqui é feita a inserção
 			mongoTemplate.save(planeta, "planeta");
 
 		}
+		
+		LOGGER.info("Inseriu!!");
 
 	}
 

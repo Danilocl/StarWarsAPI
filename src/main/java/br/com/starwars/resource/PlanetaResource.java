@@ -19,7 +19,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.starwars.models.Planeta;
 import br.com.starwars.service.PlanetaService;
-
+/**
+ * Classe que irá cuidar de todas as requisições rest
+ * @author Danilo
+ *
+ */
 @RestController
 @RequestMapping("/planeta")
 public class PlanetaResource {

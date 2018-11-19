@@ -1,5 +1,6 @@
 package br.com.starwars.exception;
 
+//Classe que cria a excessão que será utilizada nos erros
 public class ObjectNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;

@@ -4,18 +4,22 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.core.mapping.CrudMethodsSupportedHttpMethods;
 import org.springframework.stereotype.Service;
 
 import br.com.starwars.exception.ObjectNotFoundException;
 import br.com.starwars.models.Planeta;
-import br.com.starwars.repositorie.PlanetaRepositorie;
+import br.com.starwars.repository.PlanetaRepository;
 
+/**
+ * Classe que atua como controller, acessando todos os métodos do PlanetaRepository
+ * @author Danilo
+ *
+ */
 @Service
 public class PlanetaService {
 
 	@Autowired
-	private PlanetaRepositorie repoPlanet;
+	private PlanetaRepository repoPlanet;
 
 	public Planeta findById(String id) {
 		Optional<Planeta> objPlaneta = repoPlanet.findById(id);
@@ -23,7 +27,7 @@ public class PlanetaService {
 				"Planeta não encontrado! Id: " + id + ", Tipo: " + Planeta.class.getName()));
 	}
 
-	public Planeta findByName(String name) {
+	public Planeta findByName(String name) throws ObjectNotFoundException {
 
 		return repoPlanet.findByName(name);
 	}
