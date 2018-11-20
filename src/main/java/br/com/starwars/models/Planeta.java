@@ -19,6 +19,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Planeta {
 
+	public Planeta(String name, String climate, String terrain) {
+		super();
+		this.name = name;
+		this.climate = climate;
+		this.terrain = terrain;
+	}
+
 	@Id
 	@JsonProperty("id")
 	private String id;
